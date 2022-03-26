@@ -1,0 +1,51 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE generatorConfiguration PUBLIC "-//mybatis.org//DTD MyBatis Generator Configuration 1.0//EN"
+        "http://mybatis.org/dtd/mybatis-generator-config_1_0.dtd">
+<generatorConfiguration>
+
+    <context id="DB2Tables" targetRuntime="MyBatis3">
+
+        <!--自动实现Serializable接口-->
+        <plugin type="org.mybatis.generator.plugins.SerializablePlugin"></plugin>
+
+        <!-- 去除自动生成的注释 -->
+        <commentGenerator>
+            <property name="suppressAllComments" value="true" />
+        </commentGenerator>
+
+        <!--数据库基本信息-->
+        <jdbcConnection driverClass="com.mysql.jdbc.Driver"
+                        connectionURL="jdbc:mysql://localhost:3306/student?characterEncoding=UTF-8"
+                        userId="root"
+                        password="unilog">
+        </jdbcConnection>
+
+        <!--生成实体类的位置以及包的名字-->
+        <javaModelGenerator targetPackage="com.student.entity"
+                            targetProject="src\main\generator">
+            <property name="enableSubPackages" value="true" />
+            <property name="trimStrings" value="true" />
+        </javaModelGenerator>
+
+        <!--生成映射文件存放位置-->
+        <sqlMapGenerator targetPackage="com.student.mapper" targetProject="src\main\generator">
+            <property name="enableSubPackages" value="true"/>
+        </sqlMapGenerator>
+        <!--生成Dao类存放位置,mapper接口生成的位置-->
+        <javaClientGenerator type="XMLMAPPER" targetPackage="com.student.mapper" targetProject="src\main\generator">
+            <property name="enableSubPackages" value="true"/>
+        </javaClientGenerator>
+        <!--生成对应表及类名-->
+
+        <table tableName="student"  domainObjectName="Student"></table>
+<!--        <table tableName="student_build"  domainObjectName="StudentBuild"></table>-->
+<!--        <table tableName="student_build_room"  domainObjectName="StudentBuildRoom"></table>-->
+<!--        <table tableName="student_class"  domainObjectName="StudentClass"></table>-->
+<!--        <table tableName="student_sign"  domainObjectName="StudentSign"></table>-->
+<!--        <table tableName="user"  domainObjectName="User"></table>-->
+<!--        <table tableName="user_class"  domainObjectName="UserClass"></table>-->
+<!--        <table tableName="user_build"  domainObjectName="UserBuild"></table>-->
+
+    </context>
+
+</generatorConfiguration>
